@@ -20,7 +20,18 @@ cloudinary.config({
 	api_key: process.env.CLOUDINARY_API_KEY,
 	api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
+
+const express = require('express');
 const app = express();
+
+// Allow requests from specific origin
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://threads-d5hh.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 // Middlewares
 app.use(cors({ origin: "https://threads-d5hh.vercel.app/" }));
 app.use(express.json({ limit: "50mb" })); // To parse JSON data in the req.body
