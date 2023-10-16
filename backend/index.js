@@ -20,7 +20,7 @@ cloudinary.config({
 	api_key: process.env.CLOUDINARY_API_KEY,
 	api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-
+const app = express();
 // Middlewares
 app.use(cors({ origin: "https://threads-d5hh.vercel.app/" }));
 app.use(express.json({ limit: "50mb" })); // To parse JSON data in the req.body
